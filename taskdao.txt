@@ -1,0 +1,32 @@
+import dbconnect#module import
+from service import task#from the package
+import time
+taskid=1999
+taskname='python'
+description='Name'
+status='completed'
+priority=2
+notes='no notes'
+bookmark='bookm1'
+ownerid=123
+creatorid=223
+createdon='2021-11-09'
+modifiedon='2021-11-14'
+def run():
+    print("welcome to task tracker")
+    time.sleep(2)#its just to show
+    print("connecting to Database........... ")
+    time.sleep(2)
+#these values are passed to obj para to insert these to the table
+    dbconnect.connectdb()#connecting db
+    print("Inserting the values.....")
+    time.sleep(2)#task object is created here
+    t = task.Task(taskid, taskname, description, status, priority, notes, bookmark, ownerid, creatorid, createdon,modifiedon)
+    print("Inserted Successfully,getting tables ready with newly inserted values....")
+    time.sleep(2)
+    dbconnect.showtableval()
+    print("All values are commited successfully..")#showing table from dbconnect module
+
+run()
+
+#command="insert into task values("+taskid+","+taskname+","+description+","+status+","+priority+","+notes+","+bookmark+","+ownerid+","+creatorid+","+createdon+","+modifiedon+")"
